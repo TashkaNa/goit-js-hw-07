@@ -1,5 +1,7 @@
 import { galleryItems } from './gallery-items.js';
+
 // Change code below this line
+
 const list = document.querySelector(".gallery")
 const listItem = galleryItems.map(({preview, original, description}) => { 
   return `
@@ -12,10 +14,22 @@ const listItem = galleryItems.map(({preview, original, description}) => {
 list.insertAdjacentHTML('afterbegin', listItem)
 console.log(galleryItems);
 
-// import * as basicLightbox from 'basiclightbox'
+list.addEventListener('click', onImageClick)
 
-// const instance = basicLightbox.create(`
-//     <img src="assets/images/image.png" width="800" height="600">
-// `)
+function onImageClick(e) {
+  e.preventDefault();
+  if (e.target.nodeName !== 'IMG') {
+    return
+  }
+  const instance = basicLightbox.create(`
+    <img src="${e.target.dataset.source}" width="800" height="600">
+`)
+  instance.show()
 
-// instance.show()
+  list.addEventListener('keydown', (e) => {
+    if (e.code === 'Escape') {
+      instance.close()
+    }
+  })
+
+}

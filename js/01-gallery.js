@@ -30,6 +30,6 @@ function onImageClick(e) {
     if (e.code === 'Escape') {
       instance.close()
     }
-  })
+  });
 
 }

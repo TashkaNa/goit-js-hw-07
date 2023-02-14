@@ -16,7 +16,6 @@ galleryList.insertAdjacentHTML('afterbegin', createGalleryMarkup)
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
-  captionType: 'attr',
   captionData: 'alt',
   });
 
